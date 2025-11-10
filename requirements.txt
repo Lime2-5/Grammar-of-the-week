@@ -1,0 +1,12 @@
+colorama
+cpuinfo
+discord.py
+python-dotenv
+GPUtil
+psutil
+pytz
+python-dateutil
+flask
+flask-limiter
+requests
+waitress

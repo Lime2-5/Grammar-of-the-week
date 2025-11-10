@@ -1,0 +1,14 @@
+{
+    "schedule": {
+        "time": "00:00",
+        "timezone": "utc",
+        "updateDay": "Monday",
+        "startWeek": 1,
+        "endWeek": 52
+    },
+    "updateSettings": {
+        "retryAttempts": 3,
+        "retryDelayMinutes": 60,
+        "allowBackdate": true
+    }
+}
