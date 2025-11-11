@@ -1,0 +1,83 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/gaming-gaming/GOTW-Brand-Assets/main/logos/accent/gotw-logo.svg" width="50%">
+</p>
+
+# Grammar of the Week
+[![Managed by Sesquipedalians](https://raw.githubusercontent.com/gaming-gaming/GOTW-Brand-Assets/main/badges/Managed_by-Sesquipedalians-%231976d2.svg)](https://gotw.site)
+[![Version](https://raw.githubusercontent.com/gaming-gaming/GOTW-Brand-Assets/main/badges/Version-1.2.0-%2376d219.svg)](https://github.com/gaming-gaming/Grammar-of-the-Week/releases/)
+[![Free API for Developers](https://raw.githubusercontent.com/gaming-gaming/GOTW-Brand-Assets/main/badges/Free_API_for_Developers-%23d21976.svg)](https://gotw.site/api)
+[![License](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/main/badges/License-Apache%202.0-gradient.svg)](LICENSE)
+
+[![Integration for Discord](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/main/badges/Integration_for-Discord-%235865f2.svg)](https://discord.com/oauth2/authorize?client_id=1322109562119000149&permissions=0&integration_type=0&scope=bot)
+[![Made With Python](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/main/badges/Made_With-Python-%233572a5.svg)](https://www.python.org/)
+[![Made With HTML5](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/main/badges/Made_With-HTML5-%23e34c26.svg)](https://html.spec.whatwg.org/)
+[![Made With CSS](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/main/badges/Made_With-CSS-%23663399.svg)](https://www.w3.org/Style/CSS/)
+[![Made With JavaScript](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/main/badges/Made_With-JavaScript-%23f1e05a.svg)](https://tc39.es/)
+[![Powered by SQLite](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/main/badges/Powered_by-SQLite-%23003b57.svg)](https://sqlite.org/)
+
+### Overview
+**Grammar of the Week (GOTW)** is a service for providing a unique and interesting grammar lesson every week via website and communication services.
+The code is completely free to use and open-source under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+### Key Features
+- A website for displaying the Grammar of the Week (default port: `443`)
+- A free API for requesting Grammar of the Week data (default port: `8443`)
+- A Discord bot that messages subscribing users and server channels weekly
+
+> [!WARNING]  
+> The grammar database in this repository that the script uses only comes with the first 16 entries, from 1 January 2025, to 16 January 2025. You must provide your own entries or download the public database at https://wotd.site/download/words_public.db.
+
+# Extensions
+Grammar of the Week comes with extensions you may use in `./src/extensions`. The extensions included by default are for providing channels to access GOTW. You may make your own extensions by creating a folder with a `__init__.py` file inside.
+## Website + API
+The **Site** extension is in the folder `./src/extensions/site`. This extension is for both the main website ([`wotd.site`](https://wotd.site)) and the API ([`api.wotd.site`](https://api.wotd.site)).
+Inside the extension's folder is a `config.json` file for configuring the site, and a `.env` file for setting the hashed admin password.
+There is also a `messages/` folder for messages sent via the contact page, which contains json files of user mail.
+
+The API has a variety of endpoints for developers to use:
+- **/query?date={date}**: Gets the GOTW entry for a specific date (format: DD-MM-YYYY). If no date is provided, it defaults to the current date.
+- **/query_previous?date={date}&limit={limit}**: Gets a list of previous GOTW entries. The date parameter is optional and defaults to the current date. The limit parameter specifies how many previous entries to return (default is 3, maximum is 8).
+- **/find_wotd?word={word}**: Searches for a specific grammar term in the GOTW database. The word parameter is required.
+
+> [!NOTE]  
+> Displayed URLs (Like the ones shown on the API documentation page) and social links are hard-coded into the site. If you are self-hosting, be sure to replace these with your own data.
+
+## Discord Bot
+The **Discord Bot** extension is in the folder `./src/extensions/discord-bot`. Inside is a `config.json` file for your bot's configuration, and a `.env` file for your bot's token. `subscribers.db` is a database of subscribed server channels and DMs.
+
+The Discord bot includes a variety of commands for both WOTD users and administrators. User commands use slashes, while admin commands use the "! " suffix.
+
+Users may use basic query and config commands:
+![Demonstration 0](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/refs/heads/main/misc/Demo0.gif)
+![Demonstration 1](https://raw.githubusercontent.com/gaming-gaming/WOTD-Brand-Assets/refs/heads/main/misc/Demo1.gif)
+
+Admins have access to advanced commands unavailable to regular users:
+- **append {word} {ipa} {pos} {definition} {date}**: Appends a new word to the `words.db` database. The {date} argument is optional and defaults to the day after the last date set in the table.
+- **monitor**: Returns information on the hosting computer's specs and performance.
+- **query_next**: Queries tomorrow's Grammar of the Week.
+- **set_wotd {word} {ipa} {pos} {definition}**: Sets the current Grammar of the Week.
+- **test_send**: A function to test the message sent to Grammar of the Week subscribers.
+
+# Self-Hosting
+> [!CAUTION]
+> By default, both the website and API will be hosted by starting the script. To change this, you may edit the site configuration settings at `./src/extensions/site/config.json`.
+#### Linux:
+```bash
+git clone https://github.com/gaming-gaming/Word-of-the-Day.git
+cd Word-of-the-Day
+pip install -r requirements.txt
+bash start.sh
+```
+#### Windows:
+```bash
+git clone https://github.com/gaming-gaming/Word-of-the-Day.git
+cd Word-of-the-Day
+pip install -r requirements.txt
+start.bat
+```
+
+<div align="center">
+
+#### Thank you for using Grammar of the Week!
+
+</div>

@@ -3,6 +3,7 @@
         "time": "00:00",
         "timezone": "utc",
         "updateDay": "Monday",
+        "frequency": "weekly",
         "startWeek": 1,
         "endWeek": 52
     },
